@@ -46,9 +46,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: vault-auth
-    namespace: ansible
-  - kind: ServiceAccount
-    name: vault-auth
     namespace: vault
 ---
 apiVersion: v1
