@@ -16,6 +16,6 @@ SLACK_MONITORING_CHANNEL  #Alerts when there is one at least a  root  token
 Style:
 token posessing vault policies containing "developer", "admin" or root will be shown with a specific style/font
 
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![monitoring.png](monitoring.png)
+![report-with-root-tokens.png](report-with-root-tokens.png)
+![report-without-root-tokens.png](report-without-root-tokens.png)
