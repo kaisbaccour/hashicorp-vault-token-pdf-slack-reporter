@@ -1,0 +1,5 @@
+PrettyTable
+hvac
+FPDF
+slack_sdk
+operator

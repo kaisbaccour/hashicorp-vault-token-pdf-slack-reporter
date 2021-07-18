@@ -1,0 +1,58 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: vault-token-reports
+  namespace: vault
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          serviceAccountName: vault-auth
+          containers:
+          - name: vault-token-reports
+            tty: true
+            image: THE_DOCKER_IMAGE_THAT_YOU_BUILT_FROM_THIS_PROJECT:latest
+            imagePullPolicy: Always
+            env:
+              - name: SLACK_CHANNEL
+                value: G0XXXXXXXCT #SLACK CHANNEL ID
+              - name: SLACK_MONITORING_CHANNEL
+                value: G0XXXXXXXCT #SLACK CHANNEL ID for monitoring
+              - name: VAULT_ADDR
+                value: 'https://vault.my-company.com'
+              - name: REPORTER_SLACK_BEARER
+                valueFrom:
+                  secretKeyRef:
+                    name: reporter-slack-bearer
+                    key: REPORTER_SLACK_BEARER  #You need to define this secret in your k8s env
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: docker-nexus-secret #in case you have your docker on an external repo
+---
+
+#This is for the service account to authenticate the pod against the vault
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: role-tokenreview-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+  - kind: ServiceAccount
+    name: vault-auth
+    namespace: ansible
+  - kind: ServiceAccount
+    name: vault-auth
+    namespace: vault
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-auth
+  namespace: vault
