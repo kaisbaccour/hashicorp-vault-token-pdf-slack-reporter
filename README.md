@@ -1,3 +1,8 @@
+#Hashicorp vault toekn reporter
+
+This project is intended to automatically generate an overview over the active tokens living on your hashicorp vault.
+The generated overview has a pdf format and issent to a slack channel that you can configure.
+
 ##Prerequisites:
 
 This application is supposed to run as a container in a pod on kubernetes.
