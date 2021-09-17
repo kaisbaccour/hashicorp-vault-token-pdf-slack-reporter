@@ -1,4 +1,4 @@
-# Hashicorp vault toekn reporter:
+# Hashicorp vault token reporter:
 
 This project is intended to automatically generate an overview over the active tokens living on your hashicorp vault.
 The generated overview has a pdf format and is sent to a slack channel that you can configure through environment variables.
