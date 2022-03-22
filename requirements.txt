@@ -1,5 +1,11 @@
-PrettyTable
-hvac
-FPDF
-slack_sdk
-operator
+certifi==2020.12.5
+chardet==4.0.0
+fpdf==1.7.2
+hvac==0.10.11
+idna==2.10
+prettytable==2.1.0
+requests==2.25.1
+six==1.16.0
+slack-sdk==3.5.1
+urllib3==1.26.4
+wcwidth==0.2.5
