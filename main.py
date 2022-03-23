@@ -121,7 +121,7 @@ for idx,key in sorted(enumerate(keys)):
 
       
       try:
-          date_display_format="%A_%d_%B_%Y-%H:%M:%S"
+          date_display_format="%a_%d_%B_%Y-%H:%M:%S"
       except:
           print("date_display_format error. how strange!")
 
