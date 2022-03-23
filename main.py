@@ -204,7 +204,8 @@ header6, table6 = get_data_from_prettytable(unique_roles_table)
 header7, table7 = get_data_from_prettytable(unique_auth_type_table)
 header8, table8 = get_data_from_prettytable(long_lived_expiring_table)
 
-export_to_pdf(header1, table1,
+try:
+    export_to_pdf(header1, table1,
               header2, table2,
               header3, table3, 
               header4, table4, 
@@ -213,5 +214,10 @@ export_to_pdf(header1, table1,
               header7, table7,
               header8, table8,
               root_token)
+except:
+    print("export_to_pdf exception")
 
-report_and_monitor_to_slack(root_token,len(table8),multiple_tokens_with_same_id,str(multiple_tokens_with_same_id_example))
+try:
+    report_and_monitor_to_slack(root_token,len(table8),multiple_tokens_with_same_id,str(multiple_tokens_with_same_id_example))
+except:
+    print("report_and_monitor_to_slack exception")
