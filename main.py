@@ -132,7 +132,7 @@ for idx,key in sorted(enumerate(keys)):
           else:
               occ=unique_identities_dict.get(display_name)
               unique_identities_dict.update({display_name: occ+1})
-              if occ>multiple_tokens_with_same_id:
+              if occ>=multiple_tokens_with_same_id:
                   multiple_tokens_with_same_id=occ
                   multiple_tokens_with_same_id_example=display_name
           #unique_role_name
@@ -206,14 +206,16 @@ header8, table8 = get_data_from_prettytable(long_lived_expiring_table)
 
 try:
     export_to_pdf(header1, table1,
-              header2, table2,
-              header3, table3, 
-              header4, table4, 
-              header5, table5, 
-              header6, table6, 
-              header7, table7,
-              header8, table8,
-              root_token)
+                  header2, table2,
+                  header3, table3, 
+                  header4, table4, 
+                  header5, table5, 
+                  header6, table6, 
+                  header7, table7,
+                  header8, table8,
+                  root_token,
+                  multiple_tokens_with_same_id,
+                  )
 except:
     print("export_to_pdf exception")
 
